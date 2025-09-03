@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="text-center">Se connecter</h4>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Nom d'utilisateur</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+                [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            </div>
+
+            <div class="mb-3">
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="!loginForm.valid || isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                Se connecter
+              </button>
+            </div>
+          </form>
+
+          <hr>
+
+          <div class="mb-3">
+            <button class="btn btn-danger w-100 mb-2" (click)="loginWithGoogle()">
+              <i class="fab fa-google me-2"></i>Se connecter avec Google
+            </button>
+            <button class="btn btn-dark w-100" (click)="loginWithGithub()">
+              <i class="fab fa-github me-2"></i>Se connecter avec GitHub
+            </button>
+          </div>
+
+          <div class="text-center">
+            <a routerLink="/auth/register" class="text-decoration-none">Pas de compte ? S'inscrire</a>
+            <br>
+            <a routerLink="/auth/forgot-password" class="text-decoration-none">Mot de passe oublié ?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

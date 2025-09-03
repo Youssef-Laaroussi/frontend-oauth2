@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="text-center">S'inscrire</h4>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+          <div class="alert alert-success" *ngIf="success">{{ success }}</div>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Nom d'utilisateur</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+                [class.is-invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+              <div class="invalid-feedback">
+                Le nom d'utilisateur doit contenir au moins 3 caractères.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              <div class="invalid-feedback">
+                Veuillez entrer un email valide.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+              <div class="invalid-feedback">
+                Le mot de passe doit contenir au moins 6 caractères.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                [class.is-invalid]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+              <div class="invalid-feedback">
+                Les mots de passe ne correspondent pas.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="!registerForm.valid || isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                S'inscrire
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center">
+            <a routerLink="/auth/login" class="text-decoration-none">Déjà un compte ? Se connecter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
