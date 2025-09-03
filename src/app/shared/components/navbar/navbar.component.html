@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Security Demo</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngIf="currentUser$ | async as user; else loginLinks">
+          <li class="navbar-nav">
+            <span class="navbar-text me-3">Bonjour, {{ user.username }}!</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light" (click)="logout()">Déconnexion</button>
+          </li>
+        </ng-container>
+
+        <ng-template #loginLinks>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/auth/login">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/auth/register">Inscription</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>
