@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h4>Tableau de bord</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="currentUser" class="alert alert-success">
+            <h5>Bienvenue, {{ currentUser.username }}!</h5>
+            <p>Email: {{ currentUser.email }}</p>
+            <p>Rôle: {{ currentUser.role }}</p>
+          </div>
+
+          <div class="mt-4">
+            <h5>Fonctionnalités disponibles:</h5>
+            <ul>
+              <li>Authentification sécurisée avec JWT</li>
+              <li>Connexion avec Google et GitHub</li>
+              <li>Vérification d'email</li>
+              <li>Réinitialisation de mot de passe</li>
+              <li>Interface responsive</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
