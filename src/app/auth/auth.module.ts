@@ -7,6 +7,9 @@ import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import { Oauth2RedirectComponent } from './oauth2-redirect/oauth2-redirect.component';
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {VerifyEmailComponent} from "./verify-email/verify-email.component";
 
 
 @NgModule({
@@ -16,7 +19,7 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
     ForgotPasswordComponent,
     ResetPasswordComponent,
     VerifyEmailComponent,
-    OAuth2RedirectComponent
+    Oauth2RedirectComponent
 
   ],
   imports: [
@@ -28,7 +31,7 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'verify-email', component: VerifyEmailComponent },
-      { path: 'oauth2/redirect', component: OAuth2RedirectComponent },
+      { path: 'oauth2/redirect', component: Oauth2RedirectComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ])
   ]

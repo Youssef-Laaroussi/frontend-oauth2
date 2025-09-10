@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="text-center">Connexion en cours</h4>
+        </div>
+        <div class="card-body text-center">
+          <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Connexion en cours...</span>
+          </div>
+
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+          </div>
+
+          <div *ngIf="!error && !isLoading">
+            <p>Connexion réussie! Redirection...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
